@@ -13,10 +13,13 @@ if(UNIX)
  #set(CMAKE_TOOLCHAIN_FILE "/ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake")
 endif()
 if(WIN32)
-  set(CMAKE_GENERATOR_TOOLSET "v143") 
+  # set(CMAKE_GENERATOR_TOOLSET "v143") 
  # set(CMAKE_TOOLCHAIN_FILE "C:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake")
 endif()
 
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  CACHE STRING "Vcpkg toolchain file")
+  
 project(attitude-math-lib
         DESCRIPTION "Library Attitude Math"
         LANGUAGES CXX
