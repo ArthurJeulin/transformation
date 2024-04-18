@@ -14,7 +14,7 @@ log/
 /bin/
 /lib/
 /out/
-vcpkg.json
+# vcpkg.json
 # Fichiers
 *.exe
 *.dll
