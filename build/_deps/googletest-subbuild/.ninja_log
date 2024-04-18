@@ -1,0 +1,21 @@
+# ninja log v5
+10	476	1713435164566667008	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	bcb63d78ec3dc16e
+517	526	1713435164618667111	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	e6958ea07237e9f6
+0	10	1713435164102666090	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	5d271acfe6bb9ed
+517	526	1713435164618667111	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	e6958ea07237e9f6
+526	538	1713435164630667135	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	a6e3bcb8f6b396f8
+526	538	1713435164630667135	CMakeFiles/googletest-populate-complete	a6e3bcb8f6b396f8
+493	500	1713435164590667056	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	ee57786f5793454
+0	10	1713435164102666090	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	5d271acfe6bb9ed
+493	500	1713435164590667056	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	ee57786f5793454
+484	493	1713435164586667048	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	f4429b24ab9c01f2
+476	484	1713435164574667024	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	17acf08b006481bf
+500	509	1713435164602667079	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	dba661315b1f7791
+509	517	1713435164610667095	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	23be4fb88dc206a4
+526	538	1713435164630667135	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	a6e3bcb8f6b396f8
+484	493	1713435164586667048	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	f4429b24ab9c01f2
+476	484	1713435164574667024	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	17acf08b006481bf
+509	517	1713435164610667095	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	23be4fb88dc206a4
+526	538	1713435164630667135	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	a6e3bcb8f6b396f8
+500	509	1713435164602667079	/ssd/dev/transformation_course/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	dba661315b1f7791
+10	476	1713435164566667008	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	bcb63d78ec3dc16e
