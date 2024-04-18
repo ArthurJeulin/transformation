@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: attitude-math-lib
-# Configurations: Release
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Release
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -40,6 +40,18 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = /ssd/dev/transformation_course/build/
+
+#############################################
+# Utility command for test
+
+build CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test: phony CMakeFiles/test.util
+
 
 #############################################
 # Utility command for edit_cache
@@ -109,6 +121,18 @@ build install/strip: phony CMakeFiles/install/strip.util
 # Write statements declared in CMakeLists.txt:
 # /ssd/dev/transformation_course/CMakeLists.txt
 # =============================================================================
+
+
+#############################################
+# Utility command for test
+
+build _deps/googletest-build/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/_deps/googletest-build && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build _deps/googletest-build/test: phony _deps/googletest-build/CMakeFiles/test.util
 
 
 #############################################
@@ -189,12 +213,14 @@ build _deps/googletest-build/install/strip: phony _deps/googletest-build/CMakeFi
 
 build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
 
-build _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_unscanned_Release /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+build _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_unscanned_Debug /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
   DEP_FILE = _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
-  FLAGS = -O3 -DNDEBUG -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -I/ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/include -I/ssd/dev/transformation_course/build/_deps/googletest-src/googlemock -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest
   OBJECT_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock.dir
   OBJECT_FILE_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src
+  TARGET_COMPILE_PDB = lib/libgmockpdb_debug_postfix-NOTFOUND.pdb
+  TARGET_PDB = bin/libgmockpdb_debug_postfix-NOTFOUND.pdb
 
 
 # =============================================================================
@@ -204,13 +230,14 @@ build _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o:
 #############################################
 # Link the static library lib/libgmock.a
 
-build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Release _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = lib/libgmockpdb_debug_postfix-NOTFOUND.pdb
   TARGET_FILE = lib/libgmock.a
-  TARGET_PDB = gmock.a.dbg
+  TARGET_PDB = bin/libgmockpdb_debug_postfix-NOTFOUND.pdb
 
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target gmock_main
@@ -221,12 +248,14 @@ build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Release _deps/googletest-
 
 build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
 
-build _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_unscanned_Release /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+build _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_unscanned_Debug /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
   DEP_FILE = _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
-  FLAGS = -O3 -DNDEBUG -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest
   OBJECT_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
   OBJECT_FILE_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src
+  TARGET_COMPILE_PDB = lib/libgmock_mainpdb_debug_postfix-NOTFOUND.pdb
+  TARGET_PDB = bin/libgmock_mainpdb_debug_postfix-NOTFOUND.pdb
 
 
 # =============================================================================
@@ -236,13 +265,26 @@ build _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main
 #############################################
 # Link the static library lib/libgmock_main.a
 
-build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Release _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = lib/libgmock_mainpdb_debug_postfix-NOTFOUND.pdb
   TARGET_FILE = lib/libgmock_main.a
-  TARGET_PDB = gmock_main.a.dbg
+  TARGET_PDB = bin/libgmock_mainpdb_debug_postfix-NOTFOUND.pdb
+
+
+#############################################
+# Utility command for test
+
+build _deps/googletest-build/googlemock/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/_deps/googletest-build/googlemock && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build _deps/googletest-build/googlemock/test: phony _deps/googletest-build/googlemock/CMakeFiles/test.util
 
 
 #############################################
@@ -323,12 +365,14 @@ build _deps/googletest-build/googlemock/install/strip: phony _deps/googletest-bu
 
 build cmake_object_order_depends_target_gtest: phony || _deps/googletest-build/googletest/CMakeFiles/gtest.dir
 
-build _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Release /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+build _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Debug /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
   DEP_FILE = _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
-  FLAGS = -O3 -DNDEBUG -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -I/ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -I/ssd/dev/transformation_course/build/_deps/googletest-src/googletest
   OBJECT_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest.dir
   OBJECT_FILE_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src
+  TARGET_COMPILE_PDB = lib/libgtestpdb_debug_postfix-NOTFOUND.pdb
+  TARGET_PDB = bin/libgtestpdb_debug_postfix-NOTFOUND.pdb
 
 
 # =============================================================================
@@ -338,13 +382,14 @@ build _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o:
 #############################################
 # Link the static library lib/libgtest.a
 
-build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Release _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = lib/libgtestpdb_debug_postfix-NOTFOUND.pdb
   TARGET_FILE = lib/libgtest.a
-  TARGET_PDB = gtest.a.dbg
+  TARGET_PDB = bin/libgtestpdb_debug_postfix-NOTFOUND.pdb
 
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target gtest_main
@@ -355,12 +400,14 @@ build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Release _deps/googletest-
 
 build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
 
-build _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Release /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+build _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Debug /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
   DEP_FILE = _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
-  FLAGS = -O3 -DNDEBUG -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -std=c++2a -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest
   OBJECT_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
   OBJECT_FILE_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src
+  TARGET_COMPILE_PDB = lib/libgtest_mainpdb_debug_postfix-NOTFOUND.pdb
+  TARGET_PDB = bin/libgtest_mainpdb_debug_postfix-NOTFOUND.pdb
 
 
 # =============================================================================
@@ -370,13 +417,26 @@ build _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main
 #############################################
 # Link the static library lib/libgtest_main.a
 
-build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Release _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = lib/libgtest_mainpdb_debug_postfix-NOTFOUND.pdb
   TARGET_FILE = lib/libgtest_main.a
-  TARGET_PDB = gtest_main.a.dbg
+  TARGET_PDB = bin/libgtest_mainpdb_debug_postfix-NOTFOUND.pdb
+
+
+#############################################
+# Utility command for test
+
+build _deps/googletest-build/googletest/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/_deps/googletest-build/googletest && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build _deps/googletest-build/googletest/test: phony _deps/googletest-build/googletest/CMakeFiles/test.util
 
 
 #############################################
@@ -457,12 +517,23 @@ build _deps/googletest-build/googletest/install/strip: phony _deps/googletest-bu
 
 build cmake_object_order_depends_target_aml: phony || src/CMakeFiles/aml.dir
 
-build src/CMakeFiles/aml.dir/aml.cpp.o: CXX_COMPILER__aml_unscanned_Release /ssd/dev/transformation_course/src/aml.cpp || cmake_object_order_depends_target_aml
+build src/CMakeFiles/aml.dir/aml.cpp.o: CXX_COMPILER__aml_unscanned_Debug /ssd/dev/transformation_course/src/aml.cpp || cmake_object_order_depends_target_aml
   DEP_FILE = src/CMakeFiles/aml.dir/aml.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++2a
-  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include -isystem /ssd/dev/transformation_course/build/vcpkg_installed/arm64-linux/share/eigen3/../../include/eigen3
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include
   OBJECT_DIR = src/CMakeFiles/aml.dir
   OBJECT_FILE_DIR = src/CMakeFiles/aml.dir
+  TARGET_COMPILE_PDB = src/CMakeFiles/aml.dir/aml.pdb
+  TARGET_PDB = src/libaml.pdb
+
+build src/CMakeFiles/aml.dir/aml_vector_3.cpp.o: CXX_COMPILER__aml_unscanned_Debug /ssd/dev/transformation_course/src/aml_vector_3.cpp || cmake_object_order_depends_target_aml
+  DEP_FILE = src/CMakeFiles/aml.dir/aml_vector_3.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include
+  OBJECT_DIR = src/CMakeFiles/aml.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/aml.dir
+  TARGET_COMPILE_PDB = src/CMakeFiles/aml.dir/aml.pdb
+  TARGET_PDB = src/libaml.pdb
 
 
 # =============================================================================
@@ -472,13 +543,26 @@ build src/CMakeFiles/aml.dir/aml.cpp.o: CXX_COMPILER__aml_unscanned_Release /ssd
 #############################################
 # Link the static library src/libaml.a
 
-build src/libaml.a: CXX_STATIC_LIBRARY_LINKER__aml_Release src/CMakeFiles/aml.dir/aml.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build src/libaml.a: CXX_STATIC_LIBRARY_LINKER__aml_Debug src/CMakeFiles/aml.dir/aml.cpp.o src/CMakeFiles/aml.dir/aml_vector_3.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = src/CMakeFiles/aml.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = src/CMakeFiles/aml.dir/aml.pdb
   TARGET_FILE = src/libaml.a
-  TARGET_PDB = aml.a.dbg
+  TARGET_PDB = src/libaml.pdb
+
+
+#############################################
+# Utility command for test
+
+build src/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/src && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build src/test: phony src/CMakeFiles/test.util
 
 
 #############################################
@@ -551,110 +635,6 @@ build src/install/strip: phony src/CMakeFiles/install/strip.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for EXECUTABLE target aml_test
-
-
-#############################################
-# Order-only phony target for aml_test
-
-build cmake_object_order_depends_target_aml_test: phony || cmake_object_order_depends_target_aml cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
-
-build test/CMakeFiles/aml_test.dir/aml_test.cpp.o: CXX_COMPILER__aml_test_unscanned_Release /ssd/dev/transformation_course/test/aml_test.cpp || cmake_object_order_depends_target_aml_test
-  DEP_FILE = test/CMakeFiles/aml_test.dir/aml_test.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++2a
-  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include -isystem /ssd/dev/transformation_course/build/vcpkg_installed/arm64-linux/share/eigen3/../../include/eigen3 -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googlemock
-  OBJECT_DIR = test/CMakeFiles/aml_test.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/aml_test.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target aml_test
-
-
-#############################################
-# Link the executable bin/aml_test
-
-build bin/aml_test test/aml_test[1]_tests.cmake | ${cmake_ninja_workdir}test/aml_test[1]_tests.cmake: CXX_EXECUTABLE_LINKER__aml_test_Release test/CMakeFiles/aml_test.dir/aml_test.cpp.o | src/libaml.a lib/libgtest.a lib/libgtest_main.a lib/libgmock.a lib/libgmock_main.a lib/libgmock.a lib/libgtest.a || lib/libgmock.a lib/libgmock_main.a lib/libgtest.a lib/libgtest_main.a src/libaml.a
-  FLAGS = -O3 -DNDEBUG
-  LINK_LIBRARIES = src/libaml.a  lib/libgtest.a  lib/libgtest_main.a  lib/libgmock.a  lib/libgmock_main.a  lib/libgmock.a  lib/libgtest.a  -lpthread
-  OBJECT_DIR = test/CMakeFiles/aml_test.dir
-  POST_BUILD = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -D TEST_TARGET=aml_test -D TEST_EXECUTABLE=/ssd/dev/transformation_course/build/bin/aml_test -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/ssd/dev/transformation_course/build/test -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=aml_test_TESTS -D CTEST_FILE=/ssd/dev/transformation_course/build/test/aml_test[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTestAddTests.cmake
-  PRE_LINK = :
-  RESTAT = 1
-  TARGET_FILE = bin/aml_test
-  TARGET_PDB = aml_test.dbg
-
-
-#############################################
-# Utility command for edit_cache
-
-build test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build test/edit_cache: phony test/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake --regenerate-during-build -S/ssd/dev/transformation_course -B/ssd/dev/transformation_course/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
-
-
-#############################################
-# Utility command for list_install_components
-
-build test/list_install_components: phony
-
-
-#############################################
-# Utility command for install
-
-build test/CMakeFiles/install.util: CUSTOM_COMMAND test/all
-  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -P cmake_install.cmake
-  DESC = Install the project...
-  pool = console
-  restat = 1
-
-build test/install: phony test/CMakeFiles/install.util
-
-
-#############################################
-# Utility command for install/local
-
-build test/CMakeFiles/install/local.util: CUSTOM_COMMAND test/all
-  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-  DESC = Installing only the local directory...
-  pool = console
-  restat = 1
-
-build test/install/local: phony test/CMakeFiles/install/local.util
-
-
-#############################################
-# Utility command for install/strip
-
-build test/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/all
-  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-  DESC = Installing the project stripped...
-  pool = console
-  restat = 1
-
-build test/install/strip: phony test/CMakeFiles/install/strip.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /ssd/dev/transformation_course/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
 # Object build statements for EXECUTABLE target aml_example
 
 
@@ -663,12 +643,14 @@ build test/install/strip: phony test/CMakeFiles/install/strip.util
 
 build cmake_object_order_depends_target_aml_example: phony || cmake_object_order_depends_target_aml
 
-build example/CMakeFiles/aml_example.dir/main.cpp.o: CXX_COMPILER__aml_example_unscanned_Release /ssd/dev/transformation_course/example/main.cpp || cmake_object_order_depends_target_aml_example
+build example/CMakeFiles/aml_example.dir/main.cpp.o: CXX_COMPILER__aml_example_unscanned_Debug /ssd/dev/transformation_course/example/main.cpp || cmake_object_order_depends_target_aml_example
   DEP_FILE = example/CMakeFiles/aml_example.dir/main.cpp.o.d
-  FLAGS = -O3 -DNDEBUG -std=gnu++2a
-  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include -isystem /ssd/dev/transformation_course/build/vcpkg_installed/arm64-linux/share/eigen3/../../include/eigen3
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include
   OBJECT_DIR = example/CMakeFiles/aml_example.dir
   OBJECT_FILE_DIR = example/CMakeFiles/aml_example.dir
+  TARGET_COMPILE_PDB = example/CMakeFiles/aml_example.dir/
+  TARGET_PDB = bin/aml_example.pdb
 
 
 # =============================================================================
@@ -678,14 +660,27 @@ build example/CMakeFiles/aml_example.dir/main.cpp.o: CXX_COMPILER__aml_example_u
 #############################################
 # Link the executable bin/aml_example
 
-build bin/aml_example: CXX_EXECUTABLE_LINKER__aml_example_Release example/CMakeFiles/aml_example.dir/main.cpp.o | src/libaml.a || src/libaml.a
-  FLAGS = -O3 -DNDEBUG
+build bin/aml_example: CXX_EXECUTABLE_LINKER__aml_example_Debug example/CMakeFiles/aml_example.dir/main.cpp.o | src/libaml.a || src/libaml.a
+  FLAGS = -g
   LINK_LIBRARIES = src/libaml.a
   OBJECT_DIR = example/CMakeFiles/aml_example.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = example/CMakeFiles/aml_example.dir/
   TARGET_FILE = bin/aml_example
-  TARGET_PDB = aml_example.dbg
+  TARGET_PDB = bin/aml_example.pdb
+
+
+#############################################
+# Utility command for test
+
+build example/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/example && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build example/test: phony example/CMakeFiles/test.util
 
 
 #############################################
@@ -753,6 +748,162 @@ build example/CMakeFiles/install/strip.util: CUSTOM_COMMAND example/all
 build example/install/strip: phony example/CMakeFiles/install/strip.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /ssd/dev/transformation_course/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target aml_test
+
+
+#############################################
+# Order-only phony target for aml_test
+
+build cmake_object_order_depends_target_aml_test: phony || cmake_object_order_depends_target_aml cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build test/CMakeFiles/aml_test.dir/aml_test.cpp.o: CXX_COMPILER__aml_test_unscanned_Debug /ssd/dev/transformation_course/test/aml_test.cpp || cmake_object_order_depends_target_aml_test
+  DEP_FILE = test/CMakeFiles/aml_test.dir/aml_test.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest
+  OBJECT_DIR = test/CMakeFiles/aml_test.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/aml_test.dir
+  TARGET_COMPILE_PDB = test/CMakeFiles/aml_test.dir/
+  TARGET_PDB = bin/aml_test.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target aml_test
+
+
+#############################################
+# Link the executable bin/aml_test
+
+build bin/aml_test test/aml_test[1]_tests.cmake | ${cmake_ninja_workdir}test/aml_test[1]_tests.cmake: CXX_EXECUTABLE_LINKER__aml_test_Debug test/CMakeFiles/aml_test.dir/aml_test.cpp.o | src/libaml.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a src/libaml.a
+  FLAGS = -g
+  LINK_LIBRARIES = src/libaml.a  lib/libgtest_main.a  lib/libgtest.a  -lpthread
+  OBJECT_DIR = test/CMakeFiles/aml_test.dir
+  POST_BUILD = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -D TEST_TARGET=aml_test -D TEST_EXECUTABLE=/ssd/dev/transformation_course/build/bin/aml_test -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/ssd/dev/transformation_course/build/test -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=aml_test_TESTS -D CTEST_FILE=/ssd/dev/transformation_course/build/test/aml_test[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTestAddTests.cmake
+  PRE_LINK = :
+  RESTAT = 1
+  TARGET_COMPILE_PDB = test/CMakeFiles/aml_test.dir/
+  TARGET_FILE = bin/aml_test
+  TARGET_PDB = bin/aml_test.pdb
+
+# =============================================================================
+# Object build statements for EXECUTABLE target aml_vector_3_test
+
+
+#############################################
+# Order-only phony target for aml_vector_3_test
+
+build cmake_object_order_depends_target_aml_vector_3_test: phony || cmake_object_order_depends_target_aml cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build test/CMakeFiles/aml_vector_3_test.dir/aml_vector_3_test.cpp.o: CXX_COMPILER__aml_vector_3_test_unscanned_Debug /ssd/dev/transformation_course/test/aml_vector_3_test.cpp || cmake_object_order_depends_target_aml_vector_3_test
+  DEP_FILE = test/CMakeFiles/aml_vector_3_test.dir/aml_vector_3_test.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/ssd/dev/transformation_course/include -I/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/include -isystem /ssd/dev/transformation_course/build/_deps/googletest-src/googletest
+  OBJECT_DIR = test/CMakeFiles/aml_vector_3_test.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/aml_vector_3_test.dir
+  TARGET_COMPILE_PDB = test/CMakeFiles/aml_vector_3_test.dir/
+  TARGET_PDB = bin/aml_vector_3_test.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target aml_vector_3_test
+
+
+#############################################
+# Link the executable bin/aml_vector_3_test
+
+build bin/aml_vector_3_test test/aml_vector_3_test[1]_tests.cmake | ${cmake_ninja_workdir}test/aml_vector_3_test[1]_tests.cmake: CXX_EXECUTABLE_LINKER__aml_vector_3_test_Debug test/CMakeFiles/aml_vector_3_test.dir/aml_vector_3_test.cpp.o | src/libaml.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a src/libaml.a
+  FLAGS = -g
+  LINK_LIBRARIES = src/libaml.a  lib/libgtest_main.a  lib/libgtest.a  -lpthread
+  OBJECT_DIR = test/CMakeFiles/aml_vector_3_test.dir
+  POST_BUILD = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -D TEST_TARGET=aml_vector_3_test -D TEST_EXECUTABLE=/ssd/dev/transformation_course/build/bin/aml_vector_3_test -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/ssd/dev/transformation_course/build/test -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=aml_vector_3_test_TESTS -D CTEST_FILE=/ssd/dev/transformation_course/build/test/aml_vector_3_test[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTestAddTests.cmake
+  PRE_LINK = :
+  RESTAT = 1
+  TARGET_COMPILE_PDB = test/CMakeFiles/aml_vector_3_test.dir/
+  TARGET_FILE = bin/aml_vector_3_test
+  TARGET_PDB = bin/aml_vector_3_test.pdb
+
+
+#############################################
+# Utility command for test
+
+build test/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test/test: phony test/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/edit_cache: phony test/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake --regenerate-during-build -S/ssd/dev/transformation_course -B/ssd/dev/transformation_course/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/CMakeFiles/install.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/install: phony test/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/CMakeFiles/install/local.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/install/local: phony test/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /ssd/dev/transformation_course/build/test && /usr/local/lib/python3.8/dist-packages/cmake/data/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/install/strip: phony test/CMakeFiles/install/strip.util
+
+# =============================================================================
 # Target aliases.
 
 build aml: phony src/libaml.a
@@ -760,6 +911,8 @@ build aml: phony src/libaml.a
 build aml_example: phony bin/aml_example
 
 build aml_test: phony bin/aml_test
+
+build aml_vector_3_test: phony bin/aml_vector_3_test
 
 build gmock: phony lib/libgmock.a
 
@@ -787,7 +940,7 @@ build libgtest_main.a: phony lib/libgtest_main.a
 #############################################
 # Folder: /ssd/dev/transformation_course/build
 
-build all: phony _deps/googletest-build/all src/all test/all example/all
+build all: phony _deps/googletest-build/all src/all example/all test/all
 
 # =============================================================================
 
@@ -829,7 +982,7 @@ build src/all: phony src/libaml.a
 #############################################
 # Folder: /ssd/dev/transformation_course/build/test
 
-build test/all: phony bin/aml_test
+build test/all: phony bin/aml_test bin/aml_vector_3_test
 
 # =============================================================================
 # Built-in targets
@@ -838,14 +991,14 @@ build test/all: phony bin/aml_test
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /ssd/dev/transformation_course/CMakeLists.txt /ssd/dev/transformation_course/example/CMakeLists.txt /ssd/dev/transformation_course/src/CMakeLists.txt /ssd/dev/transformation_course/test/CMakeLists.txt /ssd/dev/transformation_course/vcpkg.json /ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDependentOption.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckIncludeFile.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckLibraryExists.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/ExternalProject/shared_internal_commands.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent/CMakeLists.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageMessage.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython/Support.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindThreads.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GNUInstallDirs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTest.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.5/CMakeCCompiler.cmake CMakeFiles/3.27.5/CMakeCXXCompiler.cmake CMakeFiles/3.27.5/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake vcpkg_installed/.cmakestamp vcpkg_installed/arm64-linux/share/eigen3/Eigen3Config.cmake vcpkg_installed/arm64-linux/share/eigen3/Eigen3ConfigVersion.cmake vcpkg_installed/arm64-linux/share/eigen3/Eigen3Targets.cmake
+build build.ninja: RERUN_CMAKE | /ssd/dev/transformation_course/CMakeLists.txt /ssd/dev/transformation_course/example/CMakeLists.txt /ssd/dev/transformation_course/src/CMakeLists.txt /ssd/dev/transformation_course/test/CMakeLists.txt /ssd/dev/transformation_course/vcpkg.json /ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCCompiler.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCCompilerABI.c /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDependentOption.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeNinjaFindMake.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseImplicitLinkInfo.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseLibraryArchitecture.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystem.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckIncludeFile.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckLibraryExists.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/TI-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/ExternalProject/shared_internal_commands.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent/CMakeLists.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageMessage.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython/Support.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindThreads.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GNUInstallDirs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTest.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Determine-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.5/CMakeCCompiler.cmake CMakeFiles/3.27.5/CMakeCXXCompiler.cmake CMakeFiles/3.27.5/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake vcpkg_installed/.cmakestamp
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /ssd/dev/transformation_course/CMakeLists.txt /ssd/dev/transformation_course/example/CMakeLists.txt /ssd/dev/transformation_course/src/CMakeLists.txt /ssd/dev/transformation_course/test/CMakeLists.txt /ssd/dev/transformation_course/vcpkg.json /ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDependentOption.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckIncludeFile.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckLibraryExists.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/ExternalProject/shared_internal_commands.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent/CMakeLists.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageMessage.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython/Support.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindThreads.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GNUInstallDirs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTest.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.5/CMakeCCompiler.cmake CMakeFiles/3.27.5/CMakeCXXCompiler.cmake CMakeFiles/3.27.5/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake vcpkg_installed/.cmakestamp vcpkg_installed/arm64-linux/share/eigen3/Eigen3Config.cmake vcpkg_installed/arm64-linux/share/eigen3/Eigen3ConfigVersion.cmake vcpkg_installed/arm64-linux/share/eigen3/Eigen3Targets.cmake: phony
+build /ssd/dev/transformation_course/CMakeLists.txt /ssd/dev/transformation_course/example/CMakeLists.txt /ssd/dev/transformation_course/src/CMakeLists.txt /ssd/dev/transformation_course/test/CMakeLists.txt /ssd/dev/transformation_course/vcpkg.json /ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCCompiler.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCCompilerABI.c /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDependentOption.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeNinjaFindMake.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseImplicitIncludeInfo.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseImplicitLinkInfo.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeParseLibraryArchitecture.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystem.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckIncludeFile.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/CheckLibraryExists.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ADSP-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ARMCC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/ARMClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/AppleClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Borland-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Cray-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GHS-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/HP-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IAR-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Intel-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/LCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/MSVC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/NVHPC-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/PGI-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/PathScale-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SCO-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/TI-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Tasking-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/Watcom-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XL-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/zOS-C-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/ExternalProject/shared_internal_commands.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FetchContent/CMakeLists.cmake.in /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPackageMessage.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindPython/Support.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindThreads.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GNUInstallDirs.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/GoogleTest.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Determine-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/Linux.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.5/CMakeCCompiler.cmake CMakeFiles/3.27.5/CMakeCXXCompiler.cmake CMakeFiles/3.27.5/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake vcpkg_installed/.cmakestamp: phony
 
 
 #############################################

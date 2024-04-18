@@ -1,0 +1,5 @@
+if(EXISTS "/ssd/dev/transformation_course/build/test/aml_vector_3_test[1]_tests.cmake")
+  include("/ssd/dev/transformation_course/build/test/aml_vector_3_test[1]_tests.cmake")
+else()
+  add_test(aml_vector_3_test_NOT_BUILT aml_vector_3_test_NOT_BUILT)
+endif()

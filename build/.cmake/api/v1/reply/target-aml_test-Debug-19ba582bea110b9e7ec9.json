@@ -23,9 +23,9 @@
 		[
 			"/ssd/dev/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"test/CMakeLists.txt",
+			"build/_deps/googletest-src/googletest/CMakeLists.txt",
 			"/usr/local/lib/python3.8/dist-packages/cmake/data/share/cmake-3.27/Modules/FindThreads.cmake",
 			"build/_deps/googletest-src/googletest/cmake/internal_utils.cmake",
-			"build/_deps/googletest-src/googletest/CMakeLists.txt",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -36,7 +36,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 10,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
@@ -48,39 +48,45 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 15,
+				"line" : 25,
 				"parent" : 0
 			},
 			{
-				"file" : 4
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 161,
+				"parent" : 4
 			},
 			{
 				"command" : 6,
-				"file" : 4,
+				"file" : 2,
 				"line" : 88,
 				"parent" : 4
 			},
 			{
 				"command" : 5,
-				"file" : 3,
+				"file" : 4,
 				"line" : 70,
-				"parent" : 5
+				"parent" : 6
 			},
 			{
 				"command" : 4,
 				"file" : 0,
 				"line" : 861,
-				"parent" : 6
-			},
-			{
-				"file" : 2,
 				"parent" : 7
 			},
 			{
-				"command" : 3,
-				"file" : 2,
-				"line" : 238,
+				"file" : 3,
 				"parent" : 8
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 238,
+				"parent" : 9
 			},
 			{
 				"file" : 5
@@ -88,14 +94,14 @@
 			{
 				"command" : 7,
 				"file" : 5,
-				"line" : 40,
-				"parent" : 10
+				"line" : 39,
+				"parent" : 11
 			},
 			{
 				"command" : 7,
 				"file" : 5,
-				"line" : 41,
-				"parent" : 10
+				"line" : 40,
+				"parent" : 11
 			}
 		]
 	},
@@ -105,23 +111,18 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG -std=gnu++2a"
+					"fragment" : "-g -std=gnu++2a"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 11,
+					"backtrace" : 12,
 					"path" : "/ssd/dev/transformation_course/include"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 13,
 					"path" : "/ssd/dev/transformation_course/build/vcpkg_installed/x64-windows/include"
-				},
-				{
-					"backtrace" : 3,
-					"isSystem" : true,
-					"path" : "/ssd/dev/transformation_course/build/vcpkg_installed/arm64-linux/share/eigen3/../../include/eigen3"
 				},
 				{
 					"backtrace" : 3,
@@ -132,16 +133,6 @@
 					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "/ssd/dev/transformation_course/build/_deps/googletest-src/googletest"
-				},
-				{
-					"backtrace" : 3,
-					"isSystem" : true,
-					"path" : "/ssd/dev/transformation_course/build/_deps/googletest-src/googlemock/include"
-				},
-				{
-					"backtrace" : 3,
-					"isSystem" : true,
-					"path" : "/ssd/dev/transformation_course/build/_deps/googletest-src/googlemock"
 				}
 			],
 			"language" : "CXX",
@@ -164,14 +155,6 @@
 	[
 		{
 			"backtrace" : 3,
-			"id" : "gmock::@0f7bb11d64f3678238c7"
-		},
-		{
-			"backtrace" : 3,
-			"id" : "gmock_main::@0f7bb11d64f3678238c7"
-		},
-		{
-			"backtrace" : 3,
 			"id" : "gtest::@1ea2dfc0605fe3ab2a3f"
 		},
 		{
@@ -189,7 +172,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -203,36 +186,16 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "lib/libgtest.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 3,
 				"fragment" : "lib/libgtest_main.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
-				"fragment" : "lib/libgmock.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 3,
-				"fragment" : "lib/libgmock_main.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 3,
-				"fragment" : "lib/libgmock.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 3,
+				"backtrace" : 5,
 				"fragment" : "lib/libgtest.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 9,
+				"backtrace" : 10,
 				"fragment" : "-lpthread",
 				"role" : "libraries"
 			}

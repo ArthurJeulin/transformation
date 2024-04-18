@@ -1,0 +1,30 @@
+Start testing: Apr 18 19:02 CEST
+----------------------------------------------------------
+1/1 Testing: ClassVector3Test.Constructor
+1/1 Test: ClassVector3Test.Constructor
+Command: "/ssd/dev/transformation_course/build/bin/aml_vector_3_test" "--gtest_filter=ClassVector3Test.Constructor" "--gtest_also_run_disabled_tests"
+Directory: /ssd/dev/transformation_course/build/test
+"ClassVector3Test.Constructor" start time: Apr 18 19:02 CEST
+Output:
+----------------------------------------------------------
+Running main() from /ssd/dev/transformation_course/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ClassVector3Test.Constructor
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ClassVector3Test
+[ RUN      ] ClassVector3Test.Constructor
+[       OK ] ClassVector3Test.Constructor (0 ms)
+[----------] 1 test from ClassVector3Test (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ClassVector3Test.Constructor" end time: Apr 18 19:02 CEST
+"ClassVector3Test.Constructor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 18 19:02 CEST

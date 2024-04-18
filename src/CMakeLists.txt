@@ -8,12 +8,11 @@
 #
 cmake_minimum_required(VERSION 3.27.5)
 
-find_package (Eigen3 3.3 REQUIRED NO_MODULE)
-
 set(library_name aml)
 
 add_library(${library_name} 
   aml.cpp
+  aml_vector_3.cpp
 )
 
 target_include_directories(${library_name} PUBLIC 
@@ -21,7 +20,6 @@ target_include_directories(${library_name} PUBLIC
 )
 
 target_link_libraries(${library_name} PUBLIC
-  Eigen3::Eigen 
   )
 target_compile_features(${library_name} PUBLIC cxx_std_17)
 

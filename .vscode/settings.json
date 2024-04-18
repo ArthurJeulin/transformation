@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "atomic": "cpp",
+    "chrono": "cpp",
+    "complex": "cpp",
+    "string": "cpp",
+    "ranges": "cpp",
+    "iostream": "cpp",
+    "iosfwd": "cpp",
+    "sstream": "cpp"
+  }
+}

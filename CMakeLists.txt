@@ -22,7 +22,6 @@ project(attitude-math-lib
         LANGUAGES CXX
 )
 
-set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
@@ -35,11 +34,11 @@ FetchContent_Declare(
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-
+enable_testing() #to  discover tests in test explorer 
 
 include_directories(include)
 include_directories( "${PROJECT_SOURCE_DIR}/build/vcpkg_installed/x64-windows/include")
 
 add_subdirectory(src)
-add_subdirectory(test)
 add_subdirectory(example)
+add_subdirectory(test)

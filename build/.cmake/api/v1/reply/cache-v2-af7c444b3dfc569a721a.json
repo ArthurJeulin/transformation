@@ -163,10 +163,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/aarch64-linux-gnu-g++-10"
 		},
 		{
@@ -291,10 +291,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/aarch64-linux-gnu-gcc-10"
 		},
 		{
@@ -1520,18 +1520,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
-		},
-		{
-			"name" : "Eigen3_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for Eigen3."
-				}
-			],
-			"type" : "PATH",
-			"value" : "/ssd/dev/transformation_course/build/vcpkg_installed/arm64-linux/share/eigen3"
 		},
 		{
 			"name" : "FETCHCONTENT_BASE_DIR",

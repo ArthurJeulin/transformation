@@ -1,5 +1,5 @@
 // **********************************************************
-//      2023 : Arthur JEULIN
+//      2024 : Arthur JEULIN
 //      Copyright (c) Arthur JEULIN 
 //      Created by Arthur JEULIN on 18/04/2024.
 // **********************************************************
@@ -13,5 +13,7 @@
 
 #ifndef AML_H
 #define AML_H
+
+#include "aml_vector_3.h"
 
 #endif /* AML_H*/
