@@ -2,9 +2,9 @@ name: C++ CI
 
 on:
   push:
-    branches: [ main,add_cicd_vcpkg ]
+    branches: [ main ]
   pull_request:
-    branches: [ main,add_cicd_vcpkg ]
+    branches: [ main ]
 
 jobs:
   build:
