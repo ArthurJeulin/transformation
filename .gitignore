@@ -14,8 +14,7 @@ log/
 /bin/
 /lib/
 /out/
-.vscode/
-.github/
+
 # Fichiers
 *.exe
 *.dll

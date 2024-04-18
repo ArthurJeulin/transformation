@@ -1,5 +1,0 @@
-if(EXISTS "/ssd/dev/transformation_course/build/test/aml_test[1]_tests.cmake")
-  include("/ssd/dev/transformation_course/build/test/aml_test[1]_tests.cmake")
-else()
-  add_test(aml_test_NOT_BUILT aml_test_NOT_BUILT)
-endif()
