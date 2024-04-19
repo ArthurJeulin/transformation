@@ -1,4 +1,4 @@
-name: C++ CI
+name: C++ CI with CMake Presets
 
 on:
   push:
@@ -7,21 +7,39 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
+    # Installe les dépendances nécessaires
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cmake g++ make ninja-build
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build g++ gcc git
 
-    - name: Configure CMake
-      run: cmake -S . -B build
+    # Clone vcpkg repository and install with bootstrap script
+    - name: Set up vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+        ./vcpkg/vcpkg integrate install
 
-    - name: Build
-      run: cmake --build build --config Release
+    # Configure the project using CMake Preset
+    - name: Configure CMake Project
+      run: cmake --preset ninja-multi-vcpkg
 
-    - name: Test
-      run: cmake --build build --target test --config Release
+    # Build the project using CMake Preset
+    - name: Build Project
+      run: cmake --build --preset ninja-vcpkg-debug
+
+    # Run tests using CMake Preset
+    - name: Test Project
+      run: ctest --preset test-debug
+
+    # Additional job to build and test the release configuration
+    - name: Build and Test Release
+      run: |
+        cmake --build --preset ninja-vcpkg-release
+        ctest --preset test-release
