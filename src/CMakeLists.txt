@@ -8,6 +8,8 @@
 #
 cmake_minimum_required(VERSION 3.27.5)
 
+find_package(glog 0.6.0 REQUIRED)
+
 set(library_name aml)
 
 add_library(${library_name} 
@@ -20,6 +22,7 @@ target_include_directories(${library_name} PUBLIC
 )
 
 target_link_libraries(${library_name} PUBLIC
+  glog::glog
   )
 target_compile_features(${library_name} PUBLIC cxx_std_17)
 

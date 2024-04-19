@@ -1,0 +1,83 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 27,
+      "patch": 0
+  },
+  "configurePresets": [
+      {
+          "name": "ninja-multi-vcpkg",
+          "displayName": "Ninja Multi-Config",
+          "description": "Configure with vcpkg toolchain and generate Ninja project files for all configurations",
+          "binaryDir": "${sourceDir}/build",
+          "generator": "Ninja Multi-Config",
+          "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      },
+      {
+        "name": "default",
+        "displayName": "Construction par défaut",
+        "description": "Utilisez ce préréglage pour une construction par défaut avec Ninja",
+        "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_CXX_COMPILER": "g++",
+          "CMAKE_C_COMPILER": "gcc",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+        }
+      }
+  ],
+  "buildPresets": [
+      {
+          "name": "ninja-vcpkg-debug",
+          "configurePreset": "ninja-multi-vcpkg",
+          "displayName": "Build (Debug)",
+          "description": "Build with Ninja/vcpkg (Debug)",
+          "configuration": "Debug"
+      },
+      {
+          "name": "ninja-vcpkg-release",
+          "configurePreset": "ninja-multi-vcpkg",
+          "displayName": "Build (Release)",
+          "description": "Build with Ninja/vcpkg (Release)",
+          "configuration": "Release"
+      },
+      {
+          "name": "ninja-vcpkg",
+          "configurePreset": "ninja-multi-vcpkg",
+          "displayName": "Build",
+          "description": "Build with Ninja/vcpkg"
+      },
+      {
+        "name": "default",
+        "configurePreset": "default",
+        "jobs": 4  
+      }
+  ],
+  "testPresets": [
+      {
+          "name": "test-ninja-vcpkg",
+          "configurePreset": "ninja-multi-vcpkg",
+          "hidden": true
+      },
+      {
+          "name": "test-debug",
+          "description": "Test (Debug)",
+          "displayName": "Test (Debug)",
+          "configuration": "Debug",
+          "inherits": [
+              "test-ninja-vcpkg"
+          ]
+      },
+      {
+          "name": "test-release",
+          "description": "Test (Release)",
+          "displayName": "Test (Release)",
+          "configuration": "Release",
+          "inherits": [
+              "test-ninja-vcpkg"
+          ]
+      }
+  ]
+}
