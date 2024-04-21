@@ -15,6 +15,7 @@ set(library_name aml)
 add_library(${library_name} 
   aml.cpp
   aml_vector_3.cpp
+  aml_matrix_33.cpp
 )
 
 target_include_directories(${library_name} PUBLIC 
@@ -25,5 +26,6 @@ target_link_libraries(${library_name} PUBLIC
   glog::glog
   )
 target_compile_features(${library_name} PUBLIC cxx_std_17)
+
 
 install(TARGETS ${library_name})

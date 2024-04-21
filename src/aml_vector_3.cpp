@@ -4,7 +4,7 @@
 //      Created by Arthur JEULIN on 18/04/2024.
 // **********************************************************
 //
-// Module : To be define
+// Module : Attitude Vector 3 Class
 //
 #include <cmath>
 #include <iostream>

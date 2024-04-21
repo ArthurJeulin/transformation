@@ -15,5 +15,6 @@
 #define AML_H
 
 #include "aml_vector_3.h"
+#include "aml_matrix_33.h"
 
 #endif /* AML_H*/

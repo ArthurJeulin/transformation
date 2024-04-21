@@ -19,16 +19,19 @@ endif()
 
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
   CACHE STRING "Vcpkg toolchain file")
+
   
-project(attitude-math-lib
-        DESCRIPTION "Library Attitude Math"
-        LANGUAGES CXX
-)
+  project(attitude-math-lib
+  DESCRIPTION "Library Attitude Math"
+  LANGUAGES CXX
+  )
+  
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+  
+  option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
-
+# set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Werror")
+  
 include(FetchContent)
 FetchContent_Declare(
   googletest
