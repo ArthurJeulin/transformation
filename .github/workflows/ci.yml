@@ -2,9 +2,9 @@ name: C++ CI with CMake Presets
 
 on:
   push:
-    branches: [ add_ci ]
+    branches: [ main ]
   pull_request:
-    branches: [ add_ci ]
+    branches: [ main ]
 
 jobs:
   build-and-test:
