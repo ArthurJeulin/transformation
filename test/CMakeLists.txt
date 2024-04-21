@@ -24,9 +24,7 @@ foreach(test_source ${TEST_SOURCES})
     # Link libraries
     target_link_libraries(${test_name} PRIVATE 
         aml        # Library we are testing
-        # GTest::gtest 
         GTest::gtest_main 
-        # GTest::gmock 
         # GTest::gmock_main
     )
 

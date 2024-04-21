@@ -15,28 +15,12 @@
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         },
         {
-          "name": "default",
-          "displayName": "Construction par défaut",
-          "description": "Build avec Ninja",
-          "generator": "Ninja",
-          "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-          "binaryDir": "${sourceDir}/build",
-          "cacheVariables": {
-            "CMAKE_BUILD_TYPE": "Debug",
-            "CMAKE_CXX_COMPILER": "g++",
-            "CMAKE_C_COMPILER": "gcc",
-            "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
-            "BUILD_SHARED_LIBS": "OFF",
-            "CMAKE_CXX_STANDARD": "20"
-          }
-        },
-        {
-          "name": "unix",
-          "displayName": "Build on Unix",
-          "description": "Build avec Unix",
-          "generator": "Unix Makefiles",
-          "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
-          "binaryDir": "${sourceDir}/build",
+            "name": "default",
+            "displayName": "Construction par défaut",
+            "description": "préréglage pour une construction par défaut avec Unix Makefiles",
+            "binaryDir": "${sourceDir}/build",
+            "generator": "Unix Makefiles",
+            "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
           "cacheVariables": {
             "CMAKE_CXX_COMPILER": "g++",
             "CMAKE_C_COMPILER": "gcc",
@@ -45,7 +29,6 @@
             "CMAKE_CXX_STANDARD": "20"
           }
         }
-        
     ],
     "buildPresets": [
         {
@@ -69,23 +52,26 @@
             "description": "Build with Ninja/vcpkg"
         },
         {
-            "name": "default",
+            "name": "default-debug",
             "configurePreset": "default",
             "displayName": "Build",
-            "jobs": 12  
-        },
-        {
-            "name": "unix-debug",
-            "configurePreset": "unix",
-            "displayName": "Build",
+            "description": "Build with Unix/vcpkg",
             "configuration": "Debug",
             "jobs": 12  
         },
         {
-            "name": "unix-release",
-            "configurePreset": "unix",
+            "name": "default-release",
+            "configurePreset": "default",
             "displayName": "Build",
+            "description": "Build with Unix/vcpkg",
             "configuration": "Release",
+            "jobs": 12  
+        },
+        {
+            "name": "default",
+            "configurePreset": "default",
+            "displayName": "Build",
+            "description": "Build with Unix/vcpkg",
             "jobs": 12  
         }
     ],
@@ -93,6 +79,11 @@
         {
             "name": "test-ninja-vcpkg",
             "configurePreset": "ninja-multi-vcpkg",
+            "hidden": true
+        },
+        {
+            "name": "test-default",
+            "configurePreset": "default",
             "hidden": true
         },
         {
@@ -114,11 +105,18 @@
             ]
         },
         {
-          "name": "run-all-tests",
-          "configurePreset": "default",
-          "output": {
-            "outputOnFailure": true
-          } 
+            "name": "run-all-tests",
+            "description": "Test (Debug)",
+            "displayName": "Test (Debug)",
+            "configuration": "Debug",
+            "inherits": [
+                "default"
+            ],
+            "output": {
+              "outputOnFailure": true,
+              "shortProgress": true
+            }
+             
         }
     ]
   }
