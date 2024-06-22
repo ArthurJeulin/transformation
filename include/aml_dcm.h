@@ -20,4 +20,7 @@ namespace aml
 
   Matrix33 rotationXYZ(double phi, double theta, double psi);
 
+  const double radToDeg(const double& rad);
+  const double degToRad(const double& deg);
+
 } // namespace aml

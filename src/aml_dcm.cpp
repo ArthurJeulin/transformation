@@ -13,6 +13,17 @@
 
 namespace aml
 {
+
+  const double radToDeg(const double& rad)
+  {
+    return rad * (180.0/M_PI);
+  }
+
+  const double degToRad(const double& deg)
+  {
+    return deg * (M_PI/180.0);
+  }
+
   Matrix33 rotationX(double phi)
   {
       double data[3][3] = {{1.0, 0.0, 0.0},
