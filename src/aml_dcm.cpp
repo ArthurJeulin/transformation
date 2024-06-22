@@ -20,6 +20,13 @@ namespace aml
     return os;
   }
 
+  void Euler::toDeg()
+  {
+    phi = radToDeg(phi);
+    theta = radToDeg(theta);
+    psi = radToDeg(psi);
+  }
+  
   double radToDeg(const double& rad)
   {
     return rad * (180.0/M_PI);

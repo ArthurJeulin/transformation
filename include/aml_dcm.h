@@ -22,12 +22,7 @@ namespace aml
       double theta;
       double psi;
 
-      void toDeg()
-      {
-        phi = radToDeg(phi);
-        theta = radToDeg(theta);
-        psi = radToDeg(psi);
-      }
+      void toDeg();
 
   };
   // Stream Functions
