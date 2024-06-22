@@ -13,13 +13,19 @@
 
 namespace aml
 {
+    // Stream Functions
+  std::ostream& operator<<(std::ostream& os, const Euler& angle)
+  {
+    os << "[" << angle.phi << ","<< angle.theta << ","<<angle.psi << "]";
+    return os;
+  }
 
-  const double radToDeg(const double& rad)
+  double radToDeg(const double& rad)
   {
     return rad * (180.0/M_PI);
   }
 
-  const double degToRad(const double& deg)
+  double degToRad(const double& deg)
   {
     return deg * (M_PI/180.0);
   }
@@ -57,5 +63,16 @@ namespace aml
       Matrix33 Mat = rotationX(phi)* Mat_tem;
       return Mat;
   }
+
+  const Euler eulerFromRxyz(const Matrix33& Rxyz)
+  {
+    Euler euler;
+    euler.phi = atan2(Rxyz.m23,Rxyz.m33);
+    euler.theta = -asin(Rxyz.m13);
+    euler.psi = atan2(Rxyz.m12,Rxyz.m11);
+    return euler;
+  }
+
+
 
 } // namespace aml

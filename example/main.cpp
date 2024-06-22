@@ -68,5 +68,13 @@ int main()
 
   aml::Matrix33 euler_angle = aml::rotationXYZ(30.0*(M_PI/180), 65.0*(M_PI/180), -45.0*(M_PI/180));
   std::cout << euler_angle << std::endl;
+  
+  
+  aml::Matrix33 euler_angle_test = aml::rotationXYZ(-45.0*(M_PI/180), -75.0*(M_PI/180), -78.0*(M_PI/180));
+  aml::Euler angle = eulerFromRxyz(euler_angle_test);
+  angle.toDeg();
+  std::cout << angle << std::endl;
+  
+  
   return 0;
 }

@@ -12,6 +12,27 @@
 
 namespace aml
 {
+  double radToDeg(const double& rad);
+  double degToRad(const double& deg);
+  
+  class Euler
+  {
+    public:
+      double phi;
+      double theta;
+      double psi;
+
+      void toDeg()
+      {
+        phi = radToDeg(phi);
+        theta = radToDeg(theta);
+        psi = radToDeg(psi);
+      }
+
+  };
+  // Stream Functions
+  std::ostream& operator<<(std::ostream& os, const Euler& angle);
+
   Matrix33 rotationX(double phi);
 
   Matrix33 rotationY(double theta);
@@ -20,7 +41,6 @@ namespace aml
 
   Matrix33 rotationXYZ(double phi, double theta, double psi);
 
-  const double radToDeg(const double& rad);
-  const double degToRad(const double& deg);
+  const Euler eulerFromRxyz(const Matrix33& mat);
 
 } // namespace aml
