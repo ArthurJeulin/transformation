@@ -14,6 +14,9 @@
 #ifndef AML_VECTOR_3_H
 #define AML_VECTOR_3_H
 
+#include <iostream>
+#include <cmath>
+
 namespace aml
 {
 
@@ -33,6 +36,8 @@ namespace aml
       Vector3(double val);
       Vector3(double x_, double y_, double z_);
       Vector3(const double data_[3]);
+      // Copy Constructor
+      Vector3(const Vector3& other);
 
       // Operator Assignments (Vector) v1+=v2
       Vector3& operator+=(const Vector3& rhs);

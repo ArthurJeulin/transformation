@@ -8,6 +8,7 @@
 #
 cmake_minimum_required(VERSION 3.27.5)
 
+find_package(Matplot++ REQUIRED)
 
 add_executable(aml_example 
   main.cpp
@@ -19,6 +20,8 @@ target_include_directories(aml_example PRIVATE
 
 target_link_libraries(aml_example PRIVATE
   aml
+  Matplot++::cimg 
+  Matplot++::matplot
 )
 target_compile_features(aml_example PRIVATE cxx_std_17)
 

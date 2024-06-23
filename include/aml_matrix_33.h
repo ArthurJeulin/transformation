@@ -14,6 +14,8 @@
 #ifndef AML_MATRIX_33_H
 #define AML_MATRIX_33_H
 
+#include <aml_vector_3.h>
+
 namespace aml
 {
   class Vector3;

@@ -6,8 +6,7 @@
 //
 // Module : Attitude Vector 3 Class
 //
-#include <cmath>
-#include <iostream>
+
 #include <aml_vector_3.h>
 
 namespace aml
@@ -30,7 +29,9 @@ namespace aml
   {
 
   }
-
+  Vector3::Vector3(const Vector3& other): x(other.x), y(other.y), z(other.z)
+  {
+  }
   // Vector3::Operator Assignments (Vector) v1+=v2
   Vector3& Vector3::operator+=(const Vector3& rhs)
   {

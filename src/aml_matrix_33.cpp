@@ -6,9 +6,7 @@
 //
 // Module : Attitude Vector 3 Class
 //
-#include <cmath>
-#include <iostream>
-#include <aml_vector_3.h>
+
 #include <aml_matrix_33.h>
 
 namespace aml

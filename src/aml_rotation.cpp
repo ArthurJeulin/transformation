@@ -6,9 +6,9 @@
 //
 // Module : Attitude Vector 3 Class
 //
-#include <cmath>
-#include <iostream>
-#include <aml_dcm.h>
+
+
+#include <aml_rotation.h>
 
 
 namespace aml
@@ -16,15 +16,22 @@ namespace aml
     // Stream Functions
   std::ostream& operator<<(std::ostream& os, const Euler& angle)
   {
-    os << "[" << angle.phi << ","<< angle.theta << ","<<angle.psi << "]";
+    os << "[" << angle.phi() << ","<< angle.theta() << ","<<angle.psi() << "]";
     return os;
   }
 
   void Euler::toDeg()
   {
-    phi = radToDeg(phi);
-    theta = radToDeg(theta);
-    psi = radToDeg(psi);
+    x = radToDeg(x);
+    y = radToDeg(y);
+    z = radToDeg(z);
+  }
+
+  void Euler::toRad()
+  {
+    x = degToRad(x);
+    y = degToRad(y);
+    z = degToRad(z);
   }
   
   double radToDeg(const double& rad)
@@ -74,12 +81,28 @@ namespace aml
   const Euler eulerFromRxyz(const Matrix33& Rxyz)
   {
     Euler euler;
-    euler.phi = atan2(Rxyz.m23,Rxyz.m33);
-    euler.theta = -asin(Rxyz.m13);
-    euler.psi = atan2(Rxyz.m12,Rxyz.m11);
+    euler.phi(atan2(Rxyz.m23,Rxyz.m33));
+    euler.theta(-asin(Rxyz.m13));
+    euler.psi(atan2(Rxyz.m12,Rxyz.m11));
     return euler;
   }
 
+  Vector3 eulerAngleRatesXYZ(const Euler& attitude, const Vector3& omega_body)
+  {
+    const double phi = attitude.phi();
+    const double theta = attitude.theta();
+    double data[3][3] = {{1.0, tan(theta)*sin(phi), tan(theta)*cos(phi)},
+                         {0.0, cos(phi) , sin(phi)}, 
+                         {0.0, sin(phi)/cos(theta), cos(phi)/cos(theta)}};
+    Matrix33 E(data);
+    return  E * omega_body;
+  }
+
+  Vector3 eulerIntegration(const Vector3& x, const Vector3& x_dot,
+  const double& delta_t)
+  {
+    return x + x_dot*delta_t;
+  }
 
 
 } // namespace aml
