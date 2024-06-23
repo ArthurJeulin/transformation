@@ -13,6 +13,7 @@ set(library_name aml)
 add_library(${library_name} 
   aml.cpp
   aml_vector_3.cpp
+  aml_euler.cpp
   aml_matrix_33.cpp
   aml_rotation.cpp
 )

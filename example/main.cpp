@@ -93,32 +93,40 @@ int main()
   std::vector<double> theta;
   std::vector<double> psi;
   // 20 s f = 100 Hz
-  for(double dt = 0.01; dt<= 20 ; dt+=0.01)
-  {
-    aml::Vector3 attitude_dot = aml::eulerAngleRatesXYZ(attitude, omega_body); 
-    attitude =  aml::eulerIntegration(attitude,attitude_dot,dt_step);
-    time.push_back(dt);
-    // Attention le resultat des angles est en radian donc on doit les convertire
-    phi.push_back(aml::radToDeg(attitude.phi()));
-    theta.push_back(aml::radToDeg(attitude.theta()));
-    psi.push_back(aml::radToDeg(attitude.psi()));
-  }
-
-  // for(const auto& yaw : psi)
+  // for(double dt = 0.01; dt<= 20 ; dt+=0.01)
   // {
-  //   std::cout <<yaw << std::endl;
+  //   aml::Vector3 attitude_dot = aml::eulerAngleRatesXYZ(attitude, omega_body); 
+  //   attitude =  aml::eulerIntegration(attitude,attitude_dot,dt_step);
+  //   time.push_back(dt);
+  //   // Attention le resultat des angles est en radian donc on doit les convertire
+  //   phi.push_back(aml::radToDeg(attitude.phi()));
+  //   theta.push_back(aml::radToDeg(attitude.theta()));
+  //   psi.push_back(aml::radToDeg(attitude.psi()));
   // }
 
-  plot(time,phi)->line_width(2).color("red");
-  hold(on);
-  plot(time,theta)->line_width(2).color("blue");
-  plot(time,psi)->line_width(2).color("green");
-  legend("Roll", "Pitch","Yaw");
-  title("Attitude Plot");
-  xlabel("time in s");
-  ylabel("Angle ° Deg");
-  show();
+  // // for(const auto& yaw : psi)
+  // // {
+  // //   std::cout <<yaw << std::endl;
+  // // }
 
+  // plot(time,phi)->line_width(2).color("red");
+  // hold(on);
+  // plot(time,theta)->line_width(2).color("blue");
+  // plot(time,psi)->line_width(2).color("green");
+  // legend("Roll", "Pitch","Yaw");
+  // title("Attitude Plot");
+  // xlabel("time in s");
+  // ylabel("Angle ° Deg");
+  // show();
+
+  // Start Attitude
+  aml::Euler attitude_0;
+  // End Attitude
+  aml::Euler attitude_1(aml::degToRad(-30),
+                        aml::degToRad(45),
+                        aml::degToRad(135));
+  attitude_0.display();
+  attitude_1.display();
 
   return 0;
 }

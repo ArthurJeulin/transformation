@@ -4,10 +4,10 @@
 //      Created by Arthur JEULIN on 18/04/2024.
 // **********************************************************
 //
-// Module : Attitude Vector 3 Class
+// Module : Attitude Matrix 33 Class
 //
 
-#include <aml_matrix_33.h>
+#include "aml_matrix_33.h"
 
 namespace aml
 {

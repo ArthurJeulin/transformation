@@ -16,6 +16,8 @@
 
 #include "aml_vector_3.h"
 #include "aml_matrix_33.h"
+#include "aml_euler.h"
 #include "aml_rotation.h"
+
 
 #endif /* AML_H*/
