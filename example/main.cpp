@@ -128,5 +128,7 @@ int main()
   attitude_0.display();
   attitude_1.display();
 
+  aml::Euler attitude_interp = aml::linearInterpolate(attitude_0, attitude_1, 0.5);
+  attitude_interp.display();
   return 0;
 }

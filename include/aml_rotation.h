@@ -26,7 +26,7 @@ namespace aml
 
   Vector3 eulerIntegration(const Vector3& x, const Vector3& x_dot, const double& delta_t);
 
-  Matrix33 linearInterpolate(const Matrix33& r_0, const Matrix33& r_1, const double& t);
+  Vector3 linearInterpolate(const Vector3& r_0, const Vector3& r_1, const double& t);
   
 
 } // namespace aml
